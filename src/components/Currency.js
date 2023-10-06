@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { AppContext } from '../context/AppContext';
-
+import '../App.css'
 
 const Currency = (props) => {
     const { dispatch } = useContext(AppContext);
@@ -11,28 +11,29 @@ const Currency = (props) => {
     const handleCurrencyChange = (event) => {
         setNewCurrency(event.target.value);
             
+        
             dispatch({
                 type: 'CHG_CURRENCY',
                 payload: newCurrency
             });
         }            
           
-         
+        
 
     return (
         <div>
-            <div className= 'alert alert-secondary'>
-                  <select 
-                    className="btn btn-success dropdown-toggle" 
-                    data-toggle="dropdown"
-                    id="dropdown-basic" onChange={handleCurrencyChange}
+            <div className= 'alert alert-success'>
+            <span className="dropdown-select">Currency </span>
+                <select 
+                    className="custom-dropdown mb-1" 
+                    onChange={handleCurrencyChange}
                     >
-                <option defaultValue>Choose...</option>
-                <option value="Dollar" name="dollar">$ Dollar</option>
-                <option value="Pound" name="pound">£ Pound</option>
-                <option value="Euro" name="euro">€ Euro</option>
-                <option value="Ruppee" name="ruppee">₹ Ruppee</option>
+                <option className="dropdown-option" value="Dollar" name="dollar">$ Dollar</option>
+                <option className="dropdown-option" value="Pound" name="pound">£ Pound</option>
+                <option className="dropdown-option" value="Euro" name="euro">€ Euro</option>
+                <option className="dropdown-option" value="Ruppee" name="ruppee">₹ Ruppee</option>
                   </select>
+                    
                 
             </div>
         </div>

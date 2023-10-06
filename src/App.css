@@ -36,3 +36,33 @@
     transform: rotate(360deg);
   }
 }
+
+/* Dropdown container */
+.custom-dropdown {
+    background-color: lightgreen;
+    width: 100px; /* Set your desired width */
+    color: rgb(250, 246, 246);
+    border: none;
+    }
+  
+  /* Dropdown select element */
+  .dropdown-select {
+    background-color: lightgreen;
+    color: rgb(248, 245, 245);
+    font-size: 17px;
+  }
+  
+  /* Dropdown option styles */
+  .dropdown-option {
+    background-color: lightgreen;
+    color: black;
+  }
+  
+  /* Selected option style */
+  .dropdown-select option:checked {
+    background-color: white;
+    color: black;
+  }
+  
+
+
