@@ -84,4 +84,31 @@
     color: Black; /* Text color on hover */
     
   }
+
+  .plus-button {
+    background-color: green; /* Background color on hover */
+    color: white; /* Text color on hover */
+    border: none; /* Add a border for the dropdown */
+    border-radius: 50%; /* Add rounded corners for the bottom */
+    text-align: center;
+    font-weight: bold;
+    
+    font-size: 15px;
+    position: 100%;
+    width: 20px;
+    padding: 0;
+  }
   
+  .minus-button {
+    background-color: red; /* Background color on hover */
+    color: white; /* Text color on hover */
+    border: none; /* Add a border for the dropdown */
+    border-radius: 50%; /* Add rounded corners for the bottom */
+    text-align: center;
+    font-weight: bold;
+    
+    font-size: 15px;
+    position: 100%;
+    width: 20px;
+    padding: 0;
+  }

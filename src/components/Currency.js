@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
-//import { AppContext } from '../context/AppContext';
+import React, { Component} from 'react';
+import { AppContext } from '../context/AppContext';
 import '../App.css'
+
 
 class Currency extends Component {
     constructor(props) {
@@ -17,15 +18,26 @@ class Currency extends Component {
       }));
     }
   
+    static contextType = AppContext;
+    
     handleOptionClick = (option) => {
-      this.setState({
+
+    const { dispatch } = this.context;
+
+    this.setState({
         selectedOption: option,
         isOpen: false,
       });
+      
+    dispatch({
+        type: 'CHG_CURRENCY',
+        payload: option.id
+    });
+
     }
-  
+
     render() {
-      const { isOpen, selectedOption } = this.state;
+      const { isOpen, selectedOption} = this.state;
       const currencies = [
         { id: '$', name: 'Dollar'},
         { id: '£', name: 'Pound'},

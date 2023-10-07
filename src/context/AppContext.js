@@ -3,6 +3,7 @@ import React, { createContext, useReducer } from 'react';
 // 5. The reducer - this is used to update the state, based on the action
 export const AppReducer = (state, action) => {
     let budget = 0;
+    let currencySymbol = ""
 
     switch (action.type) {
         case 'ADD_EXPENSE':
@@ -67,10 +68,11 @@ export const AppReducer = (state, action) => {
             };
         case 'CHG_CURRENCY':
             action.type = "DONE";
-            state.currency.name = action.payload.name;
+            state.currencySymbol = action.payload;
             return {
-                ...state
-            }
+                ...state,
+                currencySymbol
+            };
 
         default:
             return state;
@@ -86,15 +88,7 @@ const initialState = {
         { id: "Finance", name: 'Finance', cost: 300 },
         { id: "Sales", name: 'Sales', cost: 70 },
         { id: "Human Resource", name: 'Human Resource', cost: 40 },
-        { id: "IT", name: 'IT', cost: 500 },
-    ],
-
-    currencies: [
-        { id: '$', name: 'Dollar'},
-        { id: '£', name: 'Pound'},
-        { id: '€', name: 'Euro'},
-        { id: '₹', name: 'Ruppee'},
-    ]
+        { id: "IT", name: 'IT', cost: 500 }]
 };
 
 // 2. Creates the context this is the thing our components import and use to get the state
@@ -121,7 +115,6 @@ export const AppProvider = (props) => {
                 budget: state.budget,
                 remaining: remaining,
                 dispatch,
-                currency: state.currency,
                 currencySymbol: state.currencySymbol
             }}
         >
