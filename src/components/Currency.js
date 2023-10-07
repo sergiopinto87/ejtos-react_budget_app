@@ -1,43 +1,59 @@
-import React, { useContext, useState } from 'react';
-import { AppContext } from '../context/AppContext';
+import React, { Component } from 'react';
+//import { AppContext } from '../context/AppContext';
 import '../App.css'
 
-const Currency = (props) => {
-    const { dispatch } = useContext(AppContext);
-    const [newCurrency, setNewCurrency] = useState('');
-    //const [name, setName] = useState('');
-
-           
-    const handleCurrencyChange = (event) => {
-        setNewCurrency(event.target.value);
-            
-        
-            dispatch({
-                type: 'CHG_CURRENCY',
-                payload: newCurrency
-            });
-        }            
-          
-        
-
-    return (
-        <div>
-            <div className= 'alert alert-success'>
-            <span className="dropdown-select">Currency </span>
-                <select 
-                    className="custom-dropdown mb-1" 
-                    onChange={handleCurrencyChange}
-                    >
-                <option className="dropdown-option" value="Dollar" name="dollar">$ Dollar</option>
-                <option className="dropdown-option" value="Pound" name="pound">£ Pound</option>
-                <option className="dropdown-option" value="Euro" name="euro">€ Euro</option>
-                <option className="dropdown-option" value="Ruppee" name="ruppee">₹ Ruppee</option>
-                  </select>
-                    
-                
-            </div>
+class Currency extends Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        isOpen: false,
+        selectedOption: null,
+      };
+    }
+  
+    toggleDropdown = () => {
+      this.setState(prevState => ({
+        isOpen: !prevState.isOpen,
+      }));
+    }
+  
+    handleOptionClick = (option) => {
+      this.setState({
+        selectedOption: option,
+        isOpen: false,
+      });
+    }
+  
+    render() {
+      const { isOpen, selectedOption } = this.state;
+      const currencies = [
+        { id: '$', name: 'Dollar'},
+        { id: '£', name: 'Pound'},
+        { id: '€', name: 'Euro'},
+        { id: '₹', name: 'Ruppee'},
+      ];
+  
+      return (
+        <div className="currency-dropdown">
+          <button className="dropdown-toggle" onClick={this.toggleDropdown}>
+            {selectedOption ? `Currency (${selectedOption.id} ${selectedOption.name})` : 'Select a Currency'}
+          </button>
+          {isOpen && (
+            <ul className="dropdown-menu">
+              {currencies.map((currency, index) => (
+                <li
+                  key={index}
+                  onClick={() => this.handleOptionClick(currency)}
+                  className="currency-option"
+                >
+                  {`${currency.id} ${currency.name}`}
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
-    );
-};
-
-export default Currency;
+      );
+    }
+  }
+  
+  export default Currency;

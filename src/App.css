@@ -37,32 +37,51 @@
   }
 }
 
-/* Dropdown container */
-.custom-dropdown {
-    background-color: lightgreen;
-    width: 100px; /* Set your desired width */
-    color: rgb(250, 246, 246);
-    border: none;
-    }
-  
-  /* Dropdown select element */
-  .dropdown-select {
-    background-color: lightgreen;
-    color: rgb(248, 245, 245);
-    font-size: 17px;
+/* CurrencyDropdown.css */
+.currency-dropdown {
+    position: relative;
+    display: inline-block; /* Ensure the dropdown width matches the button */
+    
   }
   
-  /* Dropdown option styles */
-  .dropdown-option {
-    background-color: lightgreen;
-    color: black;
+  .dropdown-toggle {
+    padding: 17px; /* Adjust padding for the button */
+    cursor: pointer;
+    background-color: rgb(118, 235, 114); /* Add background color for the button */
+    border: 1px solid rgb(118, 235, 114); /* Add a border for the button */
+    color: White;
+    border-radius: 6px; /* Add border-radius for rounded corners */
   }
   
-  /* Selected option style */
-  .dropdown-select option:checked {
-    background-color: white;
-    color: black;
+  .dropdown-menu {
+    padding: 0;
+    position: absolute;
+    display: inline-block; /* Ensure the dropdown width matches the button */
+    top: 120%;
+    left: 0%;
+    width: 100%; /* Match the width of the dropdown */
+    max-height: 200px; /* Add a maximum height for the dropdown */
+    overflow-y: auto; /* Add scrollbar for overflow */
+    border: 1px solid Black; /* Add a border for the dropdown */
+    border-radius: 4px; /* Add rounded corners for the bottom */
+    background-color: rgb(118, 235, 114); /* Add background color for the dropdown */
+    z-index: 1; /* Ensure the dropdown is on top of other content */
   }
   
-
-
+  .currency-option {
+    padding: 0;
+    cursor: pointer;
+    color: black; /* Default text color */
+    transition: color 0.3s; /* Smooth color transition */
+    width: 100%; /* Match the width of the dropdown */
+    text-align: left; /* Align the text to the left */
+    
+    list-style-type: none; /* Remove bullets */
+  }
+  
+  .currency-option:hover {
+    background-color: White; /* Background color on hover */
+    color: Black; /* Text color on hover */
+    
+  }
+  
